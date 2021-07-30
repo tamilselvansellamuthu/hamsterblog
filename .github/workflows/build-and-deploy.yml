@@ -9,8 +9,9 @@ env:
 
 jobs:
   build:
-#    name: Build and Deploy
+
 	runs-on: ubuntu-latest
+
 	steps:
 	- uses: actions/checkout@v2
 
@@ -24,9 +25,6 @@ jobs:
 
 	- name: Build
 	  run: dotnet build --no-restore -c Release
-
-#	- name: Publish
-#	  run: dotnet publish --no-build -c Release -o ./publish
 
 	- name: Publish app for deploy
 	  run: dotnet publish --configuration Release --no-build --output ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
